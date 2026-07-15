@@ -6,26 +6,23 @@
 
 I build trustworthy AI infrastructure in the open — systems designed to remain user-controlled, recoverable, and free from dependence on any single model or platform.
 
-I started programming in 2019 and obtained my first software copyright registration in 2020. I entered the University of Twente through Technical Computer Science, then deliberately moved into Business Information Technology as my interests shifted toward software that must work inside real organizations. Much of my early coursework and collaboration lived on GitLab, so my public GitHub history becomes more visible from 2022. After a bachelor's thesis on machine-learning predictive modelling, I am now pursuing an MSc in Blockchain Technology at Nanyang Technological University, Singapore.
-
-## Current Focus
-
-- Secure AI runtimes and capability-based authority
-- Agent orchestration and multi-model systems
-- Local-first and privacy-preserving software
-- Distributed systems and workflow recovery
-- Cryptography and verifiable evidence
-- Open-source infrastructure
-
 ## Building
 
-### [Sovereign Crew](https://github.com/IcantFind-a-username/Soverign-Founder-OS)
+### [Sovereign Crew](https://github.com/IcantFind-a-username/Soverign-Founder-OS) · Early development
 
 An early-stage, secure, local-first, model-agnostic runtime for high-privilege AI agents, with Founder OS serving as its reference application.
 
-The project is currently developing its secure kernel and documenting the architecture. Model resilience, distributed recovery, and complete Founder OS workflows remain planned work rather than finished features.
+The repository currently contains initial secure-kernel crates and architecture documentation. Model resilience, distributed recovery, and complete Founder OS workflows remain planned work rather than finished features.
 
-The direction is simple: useful autonomy should not require surrendering privacy, ownership, evidence, or the ability to recover.
+[Repository](https://github.com/IcantFind-a-username/Soverign-Founder-OS) · [Architecture](https://github.com/IcantFind-a-username/Soverign-Founder-OS/blob/main/ARCHITECTURE.md) · [Roadmap](https://github.com/IcantFind-a-username/Soverign-Founder-OS/blob/main/ROADMAP.md)
+
+## Current Focus
+
+Secure AI runtimes · Agent orchestration · Local-first systems · Distributed recovery · Privacy and cryptography
+
+## Background
+
+I started programming in 2019 and obtained my first software copyright registration in 2020. At the University of Twente, I moved from Technical Computer Science into Business Information Technology to explore where software engineering, business systems, and product development meet. Much of my early work lived on GitLab, so my public GitHub history begins in 2022. After a bachelor's thesis on machine-learning predictive modelling, I am now pursuing an MSc in Blockchain Technology at Nanyang Technological University, Singapore.
 
 ## Selected Work
 
