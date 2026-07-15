@@ -8,9 +8,9 @@ I build trustworthy AI infrastructure in the open — systems designed to remain
 
 ## Building
 
-### [Sovereign Crew](https://github.com/IcantFind-a-username/Soverign-Founder-OS) · Early development
+### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Soverign-Founder-OS) · Early development
 
-An early-stage, secure, local-first, model-agnostic runtime for high-privilege AI agents, with Founder OS serving as its reference application.
+An early-stage, local-first AI operating system built on a secure, model-agnostic runtime for high-privilege agents.
 
 The repository currently contains initial secure-kernel crates and architecture documentation. Model resilience, distributed recovery, and complete Founder OS workflows remain planned work rather than finished features.
 
@@ -26,7 +26,7 @@ I started programming in 2019 and obtained my first software copyright registrat
 
 ## Selected Work
 
-- **[Sovereign Crew](https://github.com/IcantFind-a-username/Soverign-Founder-OS)** — trustworthy agent runtime and its Founder OS reference application
+- **[Sovereign Founder OS](https://github.com/IcantFind-a-username/Soverign-Founder-OS)** — secure agent runtime and Founder OS reference application
 - **Sqills Mixer** — collaborative software engineering project; the repository is not public
 - **Machine Learning Predictive Modelling Thesis** — undergraduate research on practical predictive models, scientific evaluation, and data-driven decision-making; the repository is not public
 
