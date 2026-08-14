@@ -27,8 +27,8 @@ I started programming in 2019 and obtained my first software copyright registrat
 ## Selected Work
 
 - **[Sovereign Founder OS](https://github.com/IcantFind-a-username/Soverign-Founder-OS)** — secure agent runtime and Founder OS reference application
-- **Sqills Mixer** — collaborative software engineering project; the repository is not public
-- **Machine Learning Predictive Modelling Thesis** — undergraduate research on practical predictive models, scientific evaluation, and data-driven decision-making; the repository is not public
+- **ICBC Quest Requirement Agent** — designer and primary implementer of the upstream Requirement Agent for ICBC's in-house Quest platform; internal project
+- **Multi-Agent Consensus Evaluation Algorithm** — creator of an original multi-agent consensus algorithm for objective AI evaluation; internal implementation
 
 ## Principles
 
