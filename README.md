@@ -110,8 +110,9 @@ GitLab.
 
 ## Connect
 
-I am open to security/infrastructure internships, research conversations, and
-collaboration on reliable multi-agent systems or secure agent runtimes.
+I am actively looking for full-time roles in AI systems, security, or
+infrastructure. I am also open to research conversations and collaboration on
+reliable multi-agent systems or secure agent runtimes.
 
 [LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) ·
 [Email](mailto:franzxu28@gmail.com) ·
