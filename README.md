@@ -84,6 +84,25 @@ Ed25519-signed hash-chained audit ledger. The full end-to-end workflow remains
 experimental, and the repository distinguishes implemented primitives from
 planned hardening work.
 
+```mermaid
+flowchart TD
+    U["Untrusted external content<br/>data only, never instructions"] --> M["AI planner<br/>proposes plans and actions"]
+    M -- "proposal only, no authority" --> P{"Deterministic policy engine<br/>scope, risk, data class"}
+    P -- "deny: fail closed" --> L
+    P -- "high-risk action" --> H["Human owner approval<br/>signed approval evidence"]
+    P -- "allowed" --> C
+    H --> C["Capability token V2<br/>single-use, scoped, time-bound,<br/>bound to the exact invocation"]
+    C --> S["Sandboxed executor<br/>import-free Wasmtime, fuel + memory limits"]
+    S --> E["Brokered local effect<br/>rooted outbox write"]
+    E --> L["Audit ledger<br/>Ed25519-signed hash chain"]
+    L -. "evidence and state feed the next cycle" .-> M
+```
+
+The target authority loop keeps model output at proposal level. Deterministic
+policy and explicit human approval grant narrowly scoped authority; sandboxed
+execution and the signed audit ledger then make each important effect bounded
+and traceable.
+
 [Architecture](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ARCHITECTURE.md) ·
 [Threat model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md) ·
 [Roadmap](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md)
