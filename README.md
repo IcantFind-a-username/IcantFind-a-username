@@ -1,123 +1,119 @@
 # Franz Xu
 
-> Couldn't find a username — found a harder question:
->
-> **How do we trust an AI agent with real authority?**
+> **I build AI systems that know what they can trust — and when they should defer.**
 
-I build trustworthy AI infrastructure in the open — systems designed to stay
-user-controlled, recoverable, and independent of any single model or platform.
-My working thesis: an agent should be constrained by code and cryptography, not
-by our hope that it behaves. Models are replaceable; user data is not.
+I am a developer and researcher working on reliable multi-agent decisions,
+secure agent infrastructure, and local-first systems. Most AI products optimize
+for producing an answer. I care about the step before that: **whose evidence
+counts, how much it counts, and whether the evidence is strong enough to act.**
 
-## Building
+`Python` · `Rust` · AI evaluation · distributed systems · applied cryptography
 
-### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS) · [Developer Preview](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md)
+## Featured project — [Corum](https://github.com/IcantFind-a-username/Corum)
 
-[![CI](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/actions/workflows/ci.yml)
-[![Stars](https://img.shields.io/github/stars/IcantFind-a-username/Sovereign-Founder-OS)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/stargazers)
-[![License](https://img.shields.io/github/license/IcantFind-a-username/Sovereign-Founder-OS)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Corum/blob/main/pyproject.toml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Corum/blob/main/LICENSE)
+[![Status: MVP](https://img.shields.io/badge/Status-MVP_in_progress-F59E0B)](https://github.com/IcantFind-a-username/Corum)
 
-<!-- sfos-status:start -->
-**Status** (auto-updated weekly): CI on `main`: passing · last commit: 2026-08-14 · 5 design RFCs · no tagged release · checked 2026-08-26
-<!-- sfos-status:end -->
+**Evidence-aware, dependence-aware consensus for reliable multi-model
+decisions.**
 
-A local-first, open-source operating system for running a one-person company
-with AI agents **without surrendering data, decisions, or authority** to any
-model, plugin, or provider — a design I call *Mutually Constrained Autonomy*.
-
-It is a 16-member Rust workspace built around thirteen runtime crates and one
-rule: **what the model suggests and what the system allows are separated.**
-Sensitive authority comes from deterministic policy code and explicit human
-approval, never from the model's own say-so.
+Corum is a general-purpose framework for combining judgments from imperfect AI
+reviewers. It is designed for the cases where majority vote is not enough:
+reviewers have different error rates, several may repeat the same underlying
+mistake, and sometimes the honest outcome is *not enough evidence*.
 
 ```mermaid
-flowchart TD
-    U["Untrusted external content<br/>data only, never instructions"] --> M["AI planner<br/>proposes plans and actions"]
-    M -- "proposal only, no authority" --> P{"Deterministic policy engine<br/>scope, risk, data class"}
-    P -- "deny: fail closed" --> L
-    P -- "high-risk action" --> H["Human owner approval<br/>signed approval evidence"]
-    P -- "allowed" --> C
-    H --> C["Capability token V2<br/>single-use, scoped, time-bound,<br/>bound to the exact invocation"]
-    C --> S["Sandboxed executor<br/>import-free Wasmtime, fuel + memory limits"]
-    S --> E["Brokered local effect<br/>rooted outbox write"]
-    E --> L["Audit ledger<br/>Ed25519-signed hash chain"]
-    L -. "evidence and state feed the next cycle" .-> M
+flowchart LR
+    A["Cases + reviewer observations"] --> B["Calibrate each reviewer"]
+    B --> C["Estimate shared errors"]
+    C --> D["Fuse independent evidence"]
+    D --> E{"Evidence sufficient?"}
+    E -->|yes| F["PASS / FAIL"]
+    E -->|no| G["Next reviewer / DEFER"]
 ```
 
-*Target authority loop: model output passes a deterministic policy engine;
-approved actions receive single-use, scoped, time-bound capability tokens;
-untrusted code runs in an import-free wasmtime sandbox; every action lands in
-an Ed25519-signed hash-chained audit ledger. Every stage is backed by an
-implemented primitive; the assembled end-to-end path is currently labeled
-Experimental — see the
-[Roadmap](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md).
-(Simplified: artifact admission and the durable authority store are omitted
-from the diagram.)*
+### What makes it different
 
-What that looks like in the codebase today:
+- **Calibration, not reputation.** Corum learns each reviewer's `2 × 3`
+  observation likelihood from labeled data and propagates Dirichlet calibration
+  uncertainty instead of treating an accuracy score as exact.
+- **Correlation is not consensus.** Dependence weights reduce duplicated
+  evidence from near-clone reviewers without counting reliability twice.
+- **Missing is not negative.** `ABSTAIN`, `TIMEOUT`, `INVALID`, `REFUSAL`, and
+  `NOT_CALLED` remain distinct states rather than being silently discarded.
+- **Deferral is a valid result.** Conservative posterior thresholds, quorum, and
+  effective sample size lead to `PASS`, `FAIL`, or an explicit `DEFER`.
+- **Evaluation before spectacle.** The project uses deterministic tests,
+  controlled simulations, and public-data replay before any paid live-model
+  experiment.
 
-- **[Policy is code, not a prompt](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/crates/policy)**
-  — authorization decisions are deterministic, testable, and enforced outside
-  the model.
-- **[Authority expires](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/crates/capability)**
-  — actions run on single-use, scoped, time-bound capability tokens bound by
-  signed approval evidence to the exact request they authorize.
-- **[Every important action leaves evidence](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/crates/audit-ledger)**
-  — an Ed25519-signed, hash-chained audit ledger that detects tampering.
-- **[Untrusted by default](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/crates/sandbox)**
-  — plugin and model output run inside a WebAssembly (wasmtime) sandbox, with
-  untrusted code compiled in resource-limited, killable worker processes.
-- **[Local-first state](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/crates/vault)**
-  — a per-entry encrypted vault and an append-only ledger that live on your
-  machine under keys you hold.
+### Current state
 
-The design is written down before it ships: five design
-[RFCs](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/rfcs)
-(two approved as implementation targets), a cross-crate
-[adversarial security-invariant test suite](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/tests/adversarial/tests/security_invariants.rs),
-and CI that enforces `clippy -D warnings`, formatting, dependency audit,
-secret scanning, and file-size limits on every change.
+`v0.1.0` currently includes the typed data model, reviewer calibration, and
+dependence estimation, with focused tests for the statistical core. Posterior
+fusion, risk-aware decisions, the adaptive reviewer cascade, simulation
+benchmarks, and the reproducible HaluEval path are the next MVP milestones.
+Synthetic and real-model results will be reported separately.
 
-**Honest about maturity.** This is a Developer Preview, and the project labels
-current vs. planned work rather than claiming absolute security. Transactional
-and revocable authority, a dual-root SQLCipher vault with recovery, hardened
-model-routing boundaries, and the full Founder OS workflow are designed and in
-active development — not finished features.
+[Repository](https://github.com/IcantFind-a-username/Corum) ·
+[MVP design](https://github.com/IcantFind-a-username/Corum/blob/main/docs/superpowers/specs/2026-08-28-corum-mvp-design.md) ·
+[Implementation plan](https://github.com/IcantFind-a-username/Corum/blob/main/docs/superpowers/plans/2026-08-28-corum-mvp.md) ·
+[Citation](https://github.com/IcantFind-a-username/Corum/blob/main/CITATION.cff)
+
+## The broader work
+
+These projects approach trustworthy AI from three different boundaries:
+
+| Project | Question | Boundary |
+| --- | --- | --- |
+| **[Corum](https://github.com/IcantFind-a-username/Corum)** | Is there enough independent evidence to decide? | Epistemic reliability |
+| **[Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)** | What is an agent actually allowed to do? | Authority and execution |
+| **[US Stock Helper](https://github.com/IcantFind-a-username/us-stock-helper)** | How can an AI assist without taking control? | Read-only decision support |
+
+### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
+
+A local-first, open-source system for running a one-person company with AI
+agents **without surrendering data, decisions, or authority** to a model or
+provider. Its core rule is simple: what the model suggests and what the system
+allows are separate.
+
+The Developer Preview is a 16-member Rust workspace with deterministic policy,
+single-use capability tokens, a Wasmtime sandbox, encrypted local state, and an
+Ed25519-signed hash-chained audit ledger. The full end-to-end workflow remains
+experimental, and the repository distinguishes implemented primitives from
+planned hardening work.
 
 [Architecture](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ARCHITECTURE.md) ·
-[Threat Model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md) ·
-[Security Policy](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/SECURITY.md) ·
-[Contributing](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/CONTRIBUTING.md) ·
-[RFCs](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/rfcs) ·
+[Threat model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md) ·
 [Roadmap](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md)
 
-## Other Work
+### [US Stock Helper](https://github.com/IcantFind-a-username/us-stock-helper)
 
-- **[US Stock Helper](https://github.com/IcantFind-a-username/us-stock-helper)**
-  — an in-development, read-only AI research copilot for U.S. equities
-  (Python, 8 services): TD Setup (nine-count), candlestick patterns, and
-  order-flow participation-proxy analysis over completed bars only. Read-only
-  by construction: no package contains a broker, trade context, or
-  order-submission interface — it analyzes, never places orders.
+An in-development, read-only AI research copilot for U.S. equities. It analyzes
+completed bars for TD Setup, candlestick patterns, and order-flow participation
+proxies. No package contains a broker, trade context, or order-submission
+interface: it analyzes, never places orders.
 
 ## Background
 
-At the University of Twente I moved from Technical Computer Science into
+At the University of Twente, I moved from Technical Computer Science into
 Business Information Technology to work where software engineering, business
-systems, and product meet (pre-2022 work lived on GitLab). After a bachelor's
-thesis on machine-learning predictive modelling, I am now pursuing an MSc in
-Blockchain Technology at Nanyang Technological University, Singapore. Industry
-work includes the upstream Requirement Agent for ICBC's in-house QUEST
-platform (2026, designer and primary implementer) and a multi-agent consensus
-evaluation algorithm (internal).
+systems, and product meet. After a bachelor's thesis on machine-learning
+predictive modelling, I am now pursuing an MSc in Blockchain Technology at
+Nanyang Technological University, Singapore.
+
+My recent industry work includes designing and primarily implementing the
+upstream Requirement Agent for ICBC's in-house QUEST platform (2026), alongside
+work on multi-agent consensus evaluation. Earlier projects lived primarily on
+GitLab.
 
 ## Connect
 
-Open to security/infrastructure internships and collaboration on secure agent
-runtimes — design review of the capability model is especially welcome.
-Contributions start at
-[CONTRIBUTING.md](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/CONTRIBUTING.md)
-or the [open issues](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/issues).
+I am open to security/infrastructure internships, research conversations, and
+collaboration on reliable multi-agent systems or secure agent runtimes.
 
-[LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) (Yiqun "Franz" Xu) ·
-[Email](mailto:franzxu28@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) ·
+[Email](mailto:franzxu28@gmail.com) ·
+[Corum issues](https://github.com/IcantFind-a-username/Corum/issues)
+
