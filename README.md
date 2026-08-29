@@ -9,56 +9,67 @@ counts, how much it counts, and whether the evidence is strong enough to act.**
 
 `Python` · `Rust` · AI evaluation · distributed systems · applied cryptography
 
-## Featured project — [Corum](https://github.com/IcantFind-a-username/Corum)
+## Featured project — [Attest](https://github.com/IcantFind-a-username/Attest)
 
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Corum/blob/main/pyproject.toml)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Corum/blob/main/LICENSE)
-[![Status: MVP](https://img.shields.io/badge/Status-MVP_in_progress-F59E0B)](https://github.com/IcantFind-a-username/Corum)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Attest/blob/main/pyproject.toml)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Attest/blob/main/LICENSE)
+[![Status: Active](https://img.shields.io/badge/Status-Active-2E7D5B)](https://github.com/IcantFind-a-username/Attest)
 
-**Evidence-aware, dependence-aware consensus for reliable multi-model
-decisions.**
+**Evidence-first AI code review — at most 3 findings per PR, each with a
+re-runnable repro. Silence over false positives.**
 
-Corum is a general-purpose framework for combining judgments from imperfect AI
-reviewers. It is designed for the cases where majority vote is not enough:
-reviewers have different error rates, several may repeat the same underlying
-mistake, and sometimes the honest outcome is *not enough evidence*.
+Attest reviews a diff the way a careful skeptic would: it treats every
+candidate finding as a wager, buys evidence in order of value, and speaks only
+when the accumulated evidence clears a calibrated statistical bar. No vote
+counting, no self-reported confidence scores — and nothing said is cheaper
+than something wrong.
 
 ```mermaid
 flowchart LR
-    A["Cases + reviewer observations"] --> B["Calibrate each reviewer"]
-    B --> C["Estimate shared errors"]
-    C --> D["Fuse independent evidence"]
-    D --> E{"Evidence sufficient?"}
-    E -->|yes| F["PASS / FAIL"]
-    E -->|no| G["Next reviewer / DEFER"]
+    A["PR diff"] --> B["Propose candidates<br/>claim · line · failure · falsification plan"]
+    B --> C["Buy evidence<br/>samples · static signals · repro test"]
+    C --> D{"Wealth ≥ 1/α?"}
+    D -->|yes| E["Surface (≤3, with repro)"]
+    D -->|refuted| F["Discard"]
+    D -->|otherwise| G["Drawer — visible, not shouted"]
 ```
 
 ### What makes it different
 
-- **Calibration, not reputation.** Corum learns each reviewer's `2 × 3`
-  observation likelihood from labeled data and propagates Dirichlet calibration
-  uncertainty instead of treating an accuracy score as exact.
-- **Correlation is not consensus.** Dependence weights reduce duplicated
-  evidence from near-clone reviewers without counting reliability twice.
-- **Missing is not negative.** `ABSTAIN`, `TIMEOUT`, `INVALID`, `REFUSAL`, and
-  `NOT_CALLED` remain distinct states rather than being silently discarded.
-- **Deferral is a valid result.** Conservative posterior thresholds, quorum, and
-  effective sample size lead to `PASS`, `FAIL`, or an explicit `DEFER`.
-- **Evaluation before spectacle.** The project uses deterministic tests,
-  controlled simulations, and public-data replay before any paid live-model
-  experiment.
+- **Silence over false positives.** Findings surface only when an e-process
+  wealth crosses `1/α`; everything else stays in a visible drawer. Deferral is
+  a valid result.
+- **Evidence you can re-run.** Every finding carries a claim, an exact line, a
+  failure scenario, and a falsification plan; verified findings ship the
+  failing test.
+- **Correlated votes don't multiply.** Repeated samples from one model are a
+  correlated panel, not independent witnesses — confidence stays honest under
+  shared blind spots.
+- **A hard budget, on the invoice.** Spend is pre-charged against a per-PR cap;
+  over budget means an explicit DEFER with a reason, never a silent overrun.
+- **BYOK, no server.** Your API key, your CI, your data. Nothing leaves.
 
-### Current state
+[Repository](https://github.com/IcantFind-a-username/Attest) ·
+[Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
 
-`v0.1.0` currently includes the typed data model, reviewer calibration, and
-dependence estimation, with focused tests for the statistical core. Posterior
-fusion, risk-aware decisions, the adaptive reviewer cascade, simulation
-benchmarks, and the reproducible HaluEval path are the next MVP milestones.
-Synthetic and real-model results will be reported separately.
+## Research origin — [Corum](https://github.com/IcantFind-a-username/Corum)
+
+[![Status: Research concluded](https://img.shields.io/badge/Status-Research_concluded-6B7280)](https://github.com/IcantFind-a-username/Corum)
+
+Attest's statistical core was forged in Corum, a preregistered research project
+on dependence-aware consensus among imperfect AI reviewers. Its formal,
+fail-closed experiment returned an **honest negative result**: with a few
+near-independent reviewers, no aggregation formula meaningfully beats simple
+reliability-weighted voting. The audit of that failure identified what *did*
+survive — calibrated posteriors that stay honest under correlated evidence, a
+redundancy discount that refuses to double-count near-clone reviewers, and the
+discipline of only adopting thresholds an oracle could actually pass. Those
+survivors became Attest.
+
+Corum is kept frozen as the research record: preregistration, locked judge,
+append-only ledgers, and bit-reproducible results.
 
 [Repository](https://github.com/IcantFind-a-username/Corum) ·
-[MVP design](https://github.com/IcantFind-a-username/Corum/blob/main/docs/superpowers/specs/2026-08-28-corum-mvp-design.md) ·
-[Implementation plan](https://github.com/IcantFind-a-username/Corum/blob/main/docs/superpowers/plans/2026-08-28-corum-mvp.md) ·
 [Citation](https://github.com/IcantFind-a-username/Corum/blob/main/CITATION.cff)
 
 ## The broader work
@@ -67,7 +78,7 @@ These projects approach trustworthy AI from three different boundaries:
 
 | Project | Question | Boundary |
 | --- | --- | --- |
-| **[Corum](https://github.com/IcantFind-a-username/Corum)** | Is there enough independent evidence to decide? | Epistemic reliability |
+| **[Attest](https://github.com/IcantFind-a-username/Attest)** | Is the evidence strong enough to speak? | Epistemic reliability |
 | **[Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)** | What is an agent actually allowed to do? | Authority and execution |
 | **[US Stock Helper](https://github.com/IcantFind-a-username/us-stock-helper)** | How can an AI assist without taking control? | Read-only decision support |
 
@@ -135,5 +146,5 @@ reliable multi-agent systems or secure agent runtimes.
 
 [LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) ·
 [Email](mailto:franzxu28@gmail.com) ·
-[Corum issues](https://github.com/IcantFind-a-username/Corum/issues)
+[Attest issues](https://github.com/IcantFind-a-username/Attest/issues)
 
