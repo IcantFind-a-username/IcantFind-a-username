@@ -15,14 +15,17 @@ counts, how much it counts, and whether the evidence is strong enough to act.**
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Attest/blob/main/LICENSE)
 [![Status: Active](https://img.shields.io/badge/Status-Active-2E7D5B)](https://github.com/IcantFind-a-username/Attest)
 
-**Evidence-first AI code review — at most 3 findings per PR, each with a
-re-runnable repro. Silence over false positives.**
+**Evidence-first AI code review — at most 3 inline comments per PR, each
+backed by a differential run that failed on the head and passed on the base.
+Silence over false positives.**
 
 Attest reviews a diff the way a careful skeptic would: it treats every
-candidate finding as a wager, buys evidence in order of value, and speaks only
-when the purchased evidence clears a fixed odds threshold. No vote counting, no
-self-reported confidence scores — and nothing said is cheaper than something
-wrong.
+candidate finding as a wager, buys evidence in a fixed order — proposer votes,
+then static signals, then differential reproduction — and speaks only when the
+purchased evidence clears a fixed odds threshold. Agreement is never a quorum,
+there are no self-reported confidence scores, and nothing said is cheaper than
+something wrong. Value-ordered scheduling is designed but not wired into the
+product path; the shipped order is fixed.
 
 The wealth process is a product of conservative likelihood ratios. It is
 deliberately **not** an e-process, and the repository has said so since D-026.
@@ -55,9 +58,11 @@ actually occur.
   channel had not. To date: **zero**, across all 45 reachable combinations and
   every candidate on record — because `S×T` caps at 9 against a threshold of 10.
   A mechanism that decides nothing should say so on the front page.
-- **Evidence you can re-run.** Every finding carries a claim, an exact line, a
-  failure scenario, and a falsification plan; verified findings ship the
-  failing test.
+- **Evidence you can check.** Every finding carries a claim, an exact line, a
+  failure scenario, a falsification plan, and the evidence actually purchased
+  with its likelihood ratios. The generated test and both sides of the
+  differential run are recorded in the ledger; posting the test alongside the
+  comment is not yet implemented.
 - **Correlated votes don't multiply.** Repeated samples from one model are a
   correlated panel, not independent witnesses — confidence stays honest under
   shared blind spots.
