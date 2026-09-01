@@ -20,9 +20,16 @@ re-runnable repro. Silence over false positives.**
 
 Attest reviews a diff the way a careful skeptic would: it treats every
 candidate finding as a wager, buys evidence in order of value, and speaks only
-when the accumulated evidence clears a calibrated statistical bar. No vote
-counting, no self-reported confidence scores — and nothing said is cheaper
-than something wrong.
+when the purchased evidence clears a fixed odds threshold. No vote counting, no
+self-reported confidence scores — and nothing said is cheaper than something
+wrong.
+
+The wealth process is a product of conservative likelihood ratios. It is
+deliberately **not** an e-process, and the repository has said so since D-026.
+Measurement later went further than the caveat: across every reachable channel
+combination, multiplying the purchased channels has **never** changed a decision
+that its strongest single channel had not already made. Differential
+reproduction is what earns the right to speak; the rest is honest bookkeeping.
 
 ```mermaid
 flowchart LR
@@ -36,9 +43,13 @@ flowchart LR
 
 ### What makes it different
 
-- **Silence over false positives.** Findings surface only when an e-process
-  wealth crosses `1/α`; everything else stays in a visible drawer. Deferral is
-  a valid result.
+- **Silence over false positives.** Findings surface only when wealth crosses
+  `1/α`; everything else stays in a visible drawer. Deferral is a valid result.
+- **The pricing layer reports whether it is load-bearing.** Every candidate
+  records whether the multiplication decided anything its strongest single
+  channel had not. To date: **zero**, across all 45 reachable combinations and
+  every candidate on record — because `S×T` caps at 9 against a threshold of 10.
+  A mechanism that decides nothing should say so on the front page.
 - **Evidence you can re-run.** Every finding carries a claim, an exact line, a
   failure scenario, and a falsification plan; verified findings ship the
   failing test.
@@ -65,6 +76,14 @@ survive — calibrated posteriors that stay honest under correlated evidence, a
 redundancy discount that refuses to double-count near-clone reviewers, and the
 discipline of only adopting thresholds an oracle could actually pass. Those
 survivors became Attest.
+
+The follow-through is the part I would want a reader to check. One survivor —
+the redundancy discount that keeps correlated reviewers from multiplying — was
+carried into Attest, priced, shipped, and then measured. It has never changed an
+outcome. Corum falsified consensus *as evidence*; that result stands, and it does
+not extend to using several models as **distinct lenses**, where the value is
+coverage of failure modes rather than accumulation of belief. Agreement is not
+confirmation; disagreement is information.
 
 Corum is kept frozen as the research record: preregistration, locked judge,
 append-only ledgers, and bit-reproducible results.
