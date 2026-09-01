@@ -34,12 +34,17 @@ reproduction is what earns the right to speak; the rest is honest bookkeeping.
 ```mermaid
 flowchart LR
     A["PR diff"] --> B["Propose candidates<br/>claim · line · failure · falsification plan"]
-    B --> C["Buy evidence<br/>samples · static signals · repro test"]
-    C --> D{"Wealth ≥ 1/α?"}
-    D -->|yes| E["Surface (≤3, with repro)"]
-    D -->|refuted| F["Discard"]
-    D -->|otherwise| G["Drawer — visible, not shouted"]
+    B --> C["S — correlated votes · T — static signals<br/>jointly capped at 9, under the bar of 10"]
+    C -->|"cannot reach the bar alone"| V["V — differential reproduction<br/>head FAIL n/n · base PASS n/n"]
+    V --> D{"Wealth ≥ 1/α?"}
+    D -->|yes| E["Surface — at most 3, ships the failing test"]
+    D -->|no| G["Drawer — visible, not shouted"]
 ```
+
+The gate has a third outcome, a silent discard at `wealth ≤ α`. At the factory
+tables it is unreachable: the smallest wealth any candidate can hold is 0.5,
+against a discard threshold of 0.1. The diagram shows the two branches that
+actually occur.
 
 ### What makes it different
 
