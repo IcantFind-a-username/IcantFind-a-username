@@ -40,7 +40,7 @@ flowchart LR
     B --> C["S — correlated votes · T — static signals<br/>jointly capped at 9, under the bar of 10"]
     C -->|"cannot reach the bar alone"| V["V — differential reproduction<br/>head FAIL n/n · base PASS n/n"]
     V --> D{"Wealth ≥ 1/α?"}
-    D -->|yes| E["Surface — at most 3, ships the failing test"]
+    D -->|yes| E["Surface — 3 inline comments, the rest in the summary"]
     D -->|no| G["Drawer — visible, not shouted"]
 ```
 
