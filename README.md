@@ -13,64 +13,74 @@ counts, how much it counts, and whether the evidence is strong enough to act.**
 
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Attest/blob/main/pyproject.toml)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Attest/blob/main/LICENSE)
-[![Status: Active](https://img.shields.io/badge/Status-Active-2E7D5B)](https://github.com/IcantFind-a-username/Attest)
+[![Status: Private pilot](https://img.shields.io/badge/Status-Private_pilot-C17D11)](https://github.com/IcantFind-a-username/Attest)
 
-**Evidence-first AI code review — at most 3 inline comments per PR, each
-backed by a differential run that failed on the head and passed on the base.
-Silence over false positives.**
+**Evidence-first AI code review where the model investigates and a non-model
+adjudicator decides what may be said.**
 
-Attest reviews a diff the way a careful skeptic would: it treats every
-candidate finding as a wager, buys evidence in a fixed order — proposer votes,
-then static signals, then differential reproduction — and speaks only when the
-purchased evidence clears a fixed odds threshold. Agreement is never a quorum,
-there are no self-reported confidence scores, and nothing said is cheaper than
-something wrong. Value-ordered scheduling is designed but not wired into the
-product path; the shipped order is fixed.
+Attest has moved from a scoring experiment to an end-to-end GitHub Action with
+a separate certification boundary. The production path treats model agreement
+as correlated ranking information, never as a vote or proof. A generated test
+then runs repeatedly on the immutable head and merge base inside a secretless
+Linux container. Only the certification kernel can turn that observation into
+an author-visible finding.
 
-The wealth process is a product of conservative likelihood ratios. It is
-deliberately **not** an e-process, and the repository has said so since D-026.
-Measurement later went further than the caveat: across every reachable channel
-combination, multiplying the purchased channels has **never** changed a decision
-that its strongest single channel had not already made. Differential
-reproduction is what earns the right to speak; the rest is honest bookkeeping.
+Every red finding now maps one-to-one to an accepted current-task receipt. The
+receipt binds the claim, hunk, exact test bytes and node, commands, interpreter,
+environment, fresh run directories, changed-line execution and controller
+seal; the resulting bundle can be verified offline. Base-owned policy controls
+admission, and a PR-level family policy enforces a hard cap of three findings
+across inline comments **and** the summary.
 
 ```mermaid
 flowchart LR
     A["PR diff"] --> B["Propose candidates<br/>claim · line · failure · falsification plan"]
-    B --> C["S — correlated votes · T — static signals<br/>jointly capped at 9, under the bar of 10"]
-    C -->|"cannot reach the bar alone"| V["V — differential reproduction<br/>head FAIL n/n · base PASS n/n"]
-    V --> D{"Wealth ≥ 1/α?"}
-    D -->|yes| E["Surface — 3 inline comments, the rest in the summary"]
-    D -->|no| G["Drawer — visible, not shouted"]
+    B --> C["Rank only<br/>correlated model + static evidence"]
+    C --> V["Exact differential reproduction<br/>head FAIL 3/3 · base PASS 3/3"]
+    V --> K{"Certification kernel<br/>binding · intent · provenance"}
+    K -->|accepted| P["PR family policy<br/>dedup · deterministic order · hard cap ≤3"]
+    K -->|defer| G["Drawer<br/>reason recorded"]
+    P --> E["GitHub comment<br/>receipt-backed"]
 ```
 
-The gate has a third outcome, a silent discard at `wealth ≤ α`. At the factory
-tables it is unreachable: the smallest wealth any candidate can hold is 0.5,
-against a discard threshold of 0.1. The diagram shows the two branches that
-actually occur.
+The same construction rule now governs four planned levels of speech:
+**red** needs a differential receipt; **gate** needs an executable failure of
+new code on a witnessed reachable input; **yellow** may state only premises a
+deterministic checker verified; **green** needs a computable structural measure
+and at least two concrete coordinates. Red exists on the product path. Green
+v0 exists and has been measured offline; gate and yellow are not built yet.
 
-### What makes it different
+### Where it stands now
 
-- **Silence over false positives.** Findings surface only when wealth crosses
-  `1/α`; everything else stays in a visible drawer. Deferral is a valid result.
-- **The pricing layer reports whether it is load-bearing.** Every candidate
-  records whether the multiplication decided anything its strongest single
-  channel had not. To date: **zero**, across all 45 reachable combinations and
-  every candidate on record — because `S×T` caps at 9 against a threshold of 10.
-  A mechanism that decides nothing should say so on the front page.
-- **Evidence you can check.** Every finding carries a claim, an exact line, a
-  failure scenario, a falsification plan, and the evidence actually purchased
-  with its likelihood ratios. The generated test and both sides of the
-  differential run are recorded in the ledger; posting the test alongside the
-  comment is not yet implemented.
-- **Correlated votes don't multiply.** Repeated samples from one model are a
-  correlated panel, not independent witnesses — confidence stays honest under
-  shared blind spots.
-- **A hard budget, on the invoice.** Spend is pre-charged against a per-PR cap;
-  over budget means an explicit DEFER with a reason, never a silent overrun.
-- **BYOK, no server.** Your API key, your CI, your data. Nothing leaves.
+- **The safety spine is implemented.** Receipt-only publication, merge-base
+  review, base-owned policy, exact-node and changed-line binding, fresh-state
+  execution, authenticated bundles, secretless Linux isolation and the public
+  hard cap are all on `main`.
+- **It has crossed the repository boundary.** The Action has been installed on
+  an outside repository, built its container on a GitHub-hosted runner, ran a
+  reproduction and posted a real PR comment. That result was a documented
+  `DEFER`, not a claimed defect.
+- **The prospective shadow has real scale, but no borrowed certainty.** Across
+  100 recent change units, the red path produced 21 accepted receipts and seven
+  shadow findings on three units. None was published and none is counted as
+  correct without independent adjudication.
+- **A cheaper structural level is emerging.** Green v0 found repeated
+  implementations in 8 of 33 Python-touching units (12 findings) with zero
+  model calls. In a five-finding author review, four were clearly true and one
+  was overstated. It is not wired into publication yet.
+- **The release gate is still red.** The preregistered null study has run 51 of
+  58 controls across five public Python projects and stopped on a wrong
+  publication twice: once under intent v2, then once in 36 additional controls
+  under v3. The execution receipts were mechanically valid; the open problem is
+  distinguishing a regression from a deliberate value change. The project is
+  a private pilot, not a production service.
+- **Failures remain first-class output.** Budget exhaustion, unsupported
+  execution, missing security capability and inconclusive evidence become a
+  named `DEFER`. A silence is an abstention, never a true negative.
 
 [Repository](https://github.com/IcantFind-a-username/Attest) ·
+[Architecture](https://github.com/IcantFind-a-username/Attest/blob/main/docs/architecture/target-algorithm.md) ·
+[Latest handoff](https://github.com/IcantFind-a-username/Attest/blob/main/docs/overnight-handoff-2026-09-04c.md) ·
 [Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
 
 ## Research origin — [Corum](https://github.com/IcantFind-a-username/Corum)
@@ -176,4 +186,3 @@ reliable multi-agent systems or secure agent runtimes.
 [LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) ·
 [Email](mailto:franzxu28@gmail.com) ·
 [Attest issues](https://github.com/IcantFind-a-username/Attest/issues)
-
