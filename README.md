@@ -1,7 +1,5 @@
 # Franz Xu
 
-[![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
-
 > **I build AI systems that know what they can trust — and when they should defer.**
 
 I am a developer and researcher working on reliable multi-agent decisions,
