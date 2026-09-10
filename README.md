@@ -1,8 +1,8 @@
 # Franz Xu
 
-> **I build AI-native systems that turn ambitious ideas into reliable, usable products — with strong architecture, explicit trust boundaries, and human control where it matters.**
-
 [![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
+
+> **I build AI-native systems that turn ambitious ideas into reliable, usable products — with strong architecture, explicit trust boundaries, and human control where it matters.**
 
 I am a developer and researcher working on reliable multi-agent decisions,
 secure agent infrastructure, and local-first systems. Most AI products optimize
