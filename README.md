@@ -1,6 +1,6 @@
 # Franz Xu
 
-> **I build AI systems that know what they can trust — and when they should defer.**
+> **I build AI-native systems that turn ambitious ideas into reliable, usable products — with strong architecture, explicit trust boundaries, and human control where it matters.**
 
 [![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
 
