@@ -32,7 +32,7 @@ after it does.
 
 | Today — business state and what only the owner may decide | Privacy — exactly which bytes would leave this machine |
 | --- | --- |
-| ![The Today view](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/today-zh.png) | ![The exposure preview for one task](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/privacy-en.png) |
+| ![The Today view](assets/today-zh.png) | ![The exposure preview for one task](assets/privacy-en.png) |
 
 ### Hire an AI employee in one click — and keep the authority
 
