@@ -124,6 +124,10 @@ Sovereign Founder OS is a **Developer Preview**. The primitives are real; the
 product boundary is not yet a production security boundary, and the
 repository is specific about the gap rather than rounding up:
 
+<!-- sfos-status:start -->
+**Status** (auto-updated weekly): CI on `main`: passing · last commit: 2026-09-11 · 7 design RFCs · no tagged release · checked 2026-09-11
+<!-- sfos-status:end -->
+
 - **there is no authenticated owner session.** The loopback server rejects
   foreign `Host` headers and non-JSON mutations, but a local caller can read
   decrypted workspace data through the API. The synthetic-owner work (RFC
