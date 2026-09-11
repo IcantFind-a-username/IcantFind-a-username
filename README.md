@@ -22,7 +22,7 @@ evidence is strong enough to act.**
 **A local-first operating system for running a one-person company with AI
 agents — without surrendering data, decisions, or authority to any model or
 provider.** This is my long-term work: 18 Rust crates, ~55k lines of Rust,
-527 passing tests, and a desktop app you can install.
+over 500 passing tests, and a desktop app you can install.
 
 The company it operates is not chat history. It is a structured enterprise
 graph — customers, projects, dated tasks, documents, invoices, receivables,
