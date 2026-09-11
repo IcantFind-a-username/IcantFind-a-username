@@ -2,7 +2,6 @@
 
 [![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
 
-[![committers.top badge](https://user-badge.committers.top/singapore/IcantFind-a-username.svg)](https://user-badge.committers.top/singapore/IcantFind-a-username)
 
 > **I build AI-native systems where the model proposes and a non-model kernel
 > decides — so that capability grows without authority quietly following it.**
