@@ -15,46 +15,74 @@ evidence is strong enough to act.**
 
 ## Flagship — [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
 
-[![Rust](https://img.shields.io/badge/Rust-16_crates-000000?logo=rust&logoColor=white)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
+[![Rust](https://img.shields.io/badge/Rust-18_crates-000000?logo=rust&logoColor=white)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/LICENSE)
 [![Maturity: Developer Preview](https://img.shields.io/badge/Maturity-Developer_Preview-orange)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md)
 
 **A local-first operating system for running a one-person company with AI
 agents — without surrendering data, decisions, or authority to any model or
-provider.** This is my long-term work.
+provider.** This is my long-term work: 18 Rust crates, ~55k lines of Rust,
+527 passing tests, and a desktop app you can install.
 
-It now installs and runs as a macOS desktop app. The company it operates is not
-chat history: it is a structured enterprise graph of customers, projects,
-documents, invoices, and decisions, and every important effect on that graph
-leaves signed, tamper-evident evidence.
+The company it operates is not chat history. It is a structured enterprise
+graph — customers, projects, dated tasks, documents, invoices, receivables,
+decisions — and every important effect on that graph passes a deterministic
+policy gate before it happens and leaves a device-signed hash-chained record
+after it does.
 
-| Today — the business state and what only the owner may decide | Privacy — exactly which bytes would leave this machine |
+| Today — business state and what only the owner may decide | Privacy — exactly which bytes would leave this machine |
 | --- | --- |
 | ![The Today view](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/today-zh.png) | ![The exposure preview for one task](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/privacy-en.png) |
 
-### What a founder can actually do today
+### Hire an AI employee in one click — and keep the authority
 
-- **Run the day.** Business tiles, the AI crew's pending proposals rendered as
-  *the exact change approval would apply*, deterministic guidance, and the
-  kernel evidence behind each one.
-- **Hire an AI employee in one click.** Six bounded roles — requirements
-  analyst, proposal writer, delivery planner, invoice clerk, quality checker,
-  compliance checker — each carrying a card that states what it reads, what it
-  delivers, and **what it may never decide**. A local model (Ollama, loopback
-  only) produces the proposal when its output validates; otherwise a
-  deterministic template does, and the decision record says which.
-- **Keep the books and the paperwork.** Leads and customers with stage and
-  consent, projects with dated tasks, drafts with revisions, signed send
-  approvals, local RFC 5322 composition, revocation, and receivables with
-  recorded payments.
-- **Check obligations against recorded facts.** A Singapore rule pack where
-  every rule cites its official source and findings are *pass / action /
-  review / unknown* — never "compliant". It is an unreviewed demo pack and a
-  reference for escalation, not legal advice.
-- **See the boundary before crossing it.** For any task, an exposure preview
-  compiles the outgoing projection and shows the per-field disposition, the
-  exact text with the customer reduced to `[ORG_1]`, and its SHA-256 — before
-  anything could be sent.
+Six bounded roles: requirements analyst, proposal writer, delivery planner,
+invoice clerk, quality checker, compliance checker. What makes them safe is
+not the prompt, it is the plumbing around it:
+
+- **Least privilege by construction.** Each role's prompt is built from a
+  typed `RoleInput` carrying only the facts that role may see. A role cannot
+  widen its own view of the company.
+- **Employees propose; they never act.** `run_employee` returns a `Decision`
+  and mutates nothing. Approval — `decide_proposal` — is what applies the
+  exact recorded change. Hiring, pausing, approving and rejecting each pass a
+  deterministic policy gate first.
+- **Every role card states what it may never do**, in the product UI, not in
+  a design doc: the invoice clerk *cannot issue, send, or collect anything*;
+  the quality checker *cannot approve on your behalf or grant any other
+  employee authority*; the compliance checker *cannot declare anything fully
+  compliant, or replace a licensed professional*.
+- **Honest provenance on every draft.** A local model (Ollama, loopback only)
+  writes the proposal when its output validates; otherwise a deterministic
+  template does — and the decision record says which one, and a refused model
+  answer says which kind of wrong it was.
+
+### The company's paperwork, with the boundary drawn first
+
+- **Money and delivery.** Leads and customers with stage and consent,
+  projects with dated tasks and acceptance criteria, drafts with revisions,
+  signed send approvals, local RFC 5322 composition, revocation, receivables
+  and recorded payments. The command-center aggregate is deliberately pure
+  over stored state — it reads nothing new, writes nothing, and *makes no
+  security claim of its own*.
+- **Obligations, cited.** A 13-rule Singapore pack — GST registration and
+  tax-invoice fields, e-invoicing, corporate tax and ECI, ACRA filings, PDPA
+  consent and DPO, record keeping, contract essentials, cross-border
+  customers. Every rule carries its issuing authority, source URL and the
+  date it was read; a rule that is product convention rather than law is
+  labelled `demo_rule` so it can never be mistaken for a statute. Findings
+  are *pass / action / review / unknown* — never "compliant". Rule packs are
+  data: a new jurisdiction is a new pack, not a change to the checker.
+- **A disclosure boundary that cannot be argued around** (RFC 0004). Values
+  arrive opaque and anything of unknown sensitivity defaults to *protected*.
+  A registered, versioned transform must name every field it may read; a
+  field it does not name is omitted, **so growing the data model cannot
+  silently start disclosing**. Only the compiler can build a public-compute
+  job, so no caller can assemble outbound bytes by declaring its own data
+  safe. Two records differing only in protected values compile to identical
+  payloads. The owner sees the exact outbound text and its SHA-256 before
+  anything could be sent — and the crate states its own limit: this reduces
+  what leaves, it does not make a public provider confidential.
 
 ### The kernel underneath
 
@@ -72,28 +100,51 @@ flowchart TD
     L -. "evidence and state feed the next cycle" .-> M
 ```
 
-Authority never originates in the model. It comes from deterministic policy and
-explicit owner approval, arrives as a single-use token bound to one invocation,
-spends itself in a sandbox that cannot import a host interface, and lands in an
-append-only hash chain that can be verified offline. Sixteen Rust crates,
-494 tests across 60 binaries, plus a cross-crate adversarial suite that attacks
-the invariants rather than the features.
+Authority never originates in the model. It comes from deterministic policy
+and explicit owner approval, arrives as a single-use token bound to one
+invocation, spends itself in a sandbox that cannot import a host interface,
+and lands in an append-only chain a third party can verify offline.
+
+A cross-crate adversarial suite attacks those invariants rather than the
+features — prompt injection cannot authorize a high-risk action; protected
+data cannot reach a cloud tool even with a self-issued token; capability
+scope, expiry and replay are enforced; tampered capability and audit evidence
+are rejected; path traversal is rejected before file access.
+
+The desktop shell is held to the same standard. It owns a window and a child
+process and nothing else: it launches the *audited* runtime binary, reads the
+ephemeral loopback port the runtime chose, grants the webview no IPC, and
+holds the runtime's stdin open — so if the shell dies by any means, the OS
+closes the pipe and the runtime stops with it. **A window can never leave a
+server running against your vault.**
 
 ### Where it stands — and where it does not
 
 Sovereign Founder OS is a **Developer Preview**. The primitives are real; the
-product boundary is not yet a production security boundary, and the repository
-says so line by line rather than rounding up:
+product boundary is not yet a production security boundary, and the
+repository is specific about the gap rather than rounding up:
 
-- the loopback server rejects foreign `Host` headers and non-JSON mutations,
-  but **there is no authenticated owner session** — a local caller can read
-  decrypted workspace data through the API;
+- **there is no authenticated owner session.** The loopback server rejects
+  foreign `Host` headers and non-JSON mutations, but a local caller can read
+  decrypted workspace data through the API. The synthetic-owner work (RFC
+  0006) exists — and is fenced *off the product path by the compiler*: the
+  whole crate sits behind a non-default feature, its outcome type is named
+  `FixtureBootstrap`, it cannot be constructed outside its crate, and it
+  depends on no authority, capability or effects code. A same-account process
+  can win an empty-registry enrolment, so the fixture proves reproduction, never
+  owner admission — and the type system is what stops a later reader from
+  mistaking one for the other;
+- **the audit chain is tamper-evident, not yet rollback-evident.**
+  `verify_chain` proves each event links to its predecessor and was signed by
+  the trusted device key — internal consistency and device binding. It proves
+  nothing about age: an older, validly-signed *prefix* of the same chain
+  passes. The freshness anchor that closes this is designed (RFC 0007) and
+  not yet built;
 - the vault encrypts entries, but its master key sits beside the data;
-- the desktop bundle is ad-hoc signed, not notarized — it is packaging around
-  the audited binary, not a new trust boundary;
-- AI employees are bounded proposers: no tools, no autonomy, no network send.
+- the desktop bundle is ad-hoc signed, not notarized; AI employees have no
+  tools, no autonomy and no network send.
 
-The long-term benchmark is deliberately hard, and openly labelled a research
+The long-term benchmark is deliberately hard and openly labelled a research
 target: *kill the model, the server, and the plugin — the company keeps
 running.*
 
@@ -101,6 +152,7 @@ running.*
 [Manifesto](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/MANIFESTO.md) ·
 [Architecture](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ARCHITECTURE.md) ·
 [Threat model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md) ·
+[RFCs](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/rfcs) ·
 [Roadmap](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ROADMAP.md)
 
 ## Shipping — [Attest](https://github.com/IcantFind-a-username/Attest)
