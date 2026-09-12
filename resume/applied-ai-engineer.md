@@ -2,9 +2,7 @@
 
 **Applied AI Engineer — agents, evaluation and guardrails for real workflows**
 
-Singapore · franzxu28@gmail.com · [linkedin.com/in/yiqun-xu-8627a8264](https://www.linkedin.com/in/yiqun-xu-8627a8264) · [github.com/IcantFind-a-username](https://github.com/IcantFind-a-username)
-
-<!-- TODO before sending: phone number; confirm the dates marked [ ] below. -->
+Singapore · +65 9439 8299 · franzxu28@gmail.com · [linkedin.com/in/yiqun-xu-8627a8264](https://www.linkedin.com/in/yiqun-xu-8627a8264) · [github.com/IcantFind-a-username](https://github.com/IcantFind-a-username)
 
 ## Summary
 
@@ -15,9 +13,11 @@ anecdotes. Sole author of two open-source production-shaped systems in 2026:
 a local-first Rust operating system for running a one-person company with six
 bounded AI employees (CRM, proposals, invoicing, Singapore compliance checks),
 and a Python GitHub Action that lets an LLM review pull requests but only
-publish claims it has reproduced. Designed and primarily implemented the
-upstream Requirement Agent for ICBC's in-house QUEST platform. Comfortable
-saying what a system cannot do: every number below links to a measurement.
+publish claims it has reproduced. As an intern at ICBC, designed and primarily
+implemented the upstream Requirement Agent for the bank's in-house QUEST
+platform; it was accepted and is now being integrated into the QUEST core for
+bank-wide internal release in 2027. Comfortable saying what a system cannot
+do: every number below links to a measurement.
 
 ## Skills
 
@@ -127,19 +127,22 @@ ledgers, bit-reproducible results.
 
 ## Experience
 
-**ICBC — QUEST platform, Requirement Agent** · designer and primary implementer · 2026 <!-- TODO: months, engagement type -->
+**Industrial and Commercial Bank of China (ICBC) — AI Engineering Intern, QUEST platform** · 2026
 
 - Designed and primarily implemented the upstream Requirement Agent for the
-  bank's in-house QUEST platform: the component that turns raw business
+  bank's in-house QUEST agent platform: the component that turns raw business
   requirements into structured, reviewable inputs for downstream automation.
+- Delivered to production: the agent was accepted and is being integrated
+  into the QUEST core, scheduled for bank-wide internal release in 2027 at the
+  largest bank in China by assets, whose in-house agent platform is closely
+  watched across the Chinese banking sector.
 - Built a multi-agent consensus evaluation algorithm for objective assessment
   of AI outputs, later falsified and refined in the open through Corum.
-  <!-- TODO: add one measured outcome (throughput, review time, adoption) if it can be shared. -->
 
 ## Education
 
-- **Nanyang Technological University, Singapore** — MSc Blockchain Technology, in progress <!-- TODO: start year, expected graduation -->
-- **University of Twente, Netherlands** — BSc, Technical Computer Science then Business Information Technology; bachelor's thesis on machine-learning predictive modelling <!-- TODO: years -->
+- **Nanyang Technological University, Singapore** — MSc Blockchain Technology, Nov 2025 – Nov 2026 (expected)
+- **University of Twente, Netherlands** — BSc Business Information Technology (entered via Technical Computer Science), Sep 2022 – Jul 2025; bachelor's thesis on machine-learning predictive modelling
 
 ## Languages
 
