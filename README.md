@@ -162,14 +162,16 @@ running.*
 
 ## Shipping — [Attest](https://github.com/IcantFind-a-username/Attest)
 
+[![Release](https://img.shields.io/github/v/release/IcantFind-a-username/Attest)](https://github.com/IcantFind-a-username/Attest/releases/latest)
+[![GitHub Marketplace](https://img.shields.io/badge/GitHub%20Marketplace-attest%20pull%20request%20review-2ea44f?logo=github)](https://github.com/marketplace/actions/attest-pull-request-review)
+[![gates](https://img.shields.io/github/actions/workflow/status/IcantFind-a-username/Attest/ci.yml?branch=main&label=gates)](https://github.com/IcantFind-a-username/Attest/actions/workflows/ci.yml)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Attest/blob/main/pyproject.toml)
-[![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Attest/blob/main/LICENSE)
-[![Status: Private pilot](https://img.shields.io/badge/Status-Private_pilot-C17D11)](https://github.com/IcantFind-a-username/Attest)
+[![License](https://img.shields.io/github/license/IcantFind-a-username/Attest)](https://github.com/IcantFind-a-username/Attest/blob/main/LICENSE)
 
 **Evidence-first AI code review: the model investigates, and a non-model
 certification kernel decides what may be said.** The same separation as
-Sovereign Founder OS, applied to a narrower problem — and packaged as a GitHub
-Action.
+Sovereign Founder OS, applied to a narrower problem — and shipped as a GitHub
+Action on the Marketplace (`v0.2.0`).
 
 Model agreement is treated as correlated ranking information, never as a vote
 or a proof. A generated test runs repeatedly against the immutable head and the
@@ -190,21 +192,34 @@ flowchart LR
     P --> E["GitHub comment<br/>receipt-backed"]
 ```
 
-- **The safety spine is on `main`** and has crossed the repository boundary: the
-  Action installed on an outside repo, built its container on a hosted runner,
-  ran a reproduction, and posted a real comment — a documented `DEFER`, not a
-  claimed defect.
-- **No borrowed certainty.** Across 100 recent change units the red path
-  produced 21 accepted receipts and seven shadow findings; none published, none
-  counted correct without independent adjudication.
-- **The release gate is still red.** The preregistered null study stopped on a
-  wrong publication twice; the open problem is distinguishing a regression from
-  a deliberate value change. Private pilot, not a production service.
+- **Released, still experimental.** `v0.2.0` installs from its tag as a GitHub
+  Action; the repository's first screen says how experimental, with numbers a
+  script writes from the adjudication tables — never typed.
+- **Four levels that never borrow each other's words.** Red is a defect claim
+  backed by a differential receipt: the generated test fails on head and passes
+  on the merge base, three runs each way, in a network-free container, verifiable
+  offline. Yellow is a measured fact with coordinates and no defect claim — what a
+  call returned on the merge base and returns now, or the impact scope of an
+  interface change. Green is a structural observation computed with no model.
+  When nothing meets a bar, the review says so in one line with its unit count.
+- **Measured, and adjudicated by hand.** On 44 merged pull requests of 13
+  open-source Python libraries it said 7 lines; I judged them one by one:
+  4 useful, 3 true but not actionable, 0 wrong. Recall is low and named — 9 of 40
+  injected forward defects (22.5%), 5 of 25 on a reversed held-out slice; two
+  corpora, two denominators, neither natural traffic. Every line and its receipt
+  is in [`docs/receipts.md`](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md).
+- **Intent is asked, not guessed.** A head that newly rejects an input the merge
+  base accepted is a behaviour change whose intent the reviewer cannot read: it
+  is shown as a yellow line and handed to the author, and published red only when
+  the base tree's own tests use that input. A warning is never a rejection.
+  Thirteen red-team attack classes are marked and never certified.
 - **Failures are first-class output.** Budget exhaustion, unsupported
   execution, or inconclusive evidence become a named `DEFER`. Silence is an
   abstention, never a true negative.
 
+[Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) ·
 [Repository](https://github.com/IcantFind-a-username/Attest) ·
+[Release notes](https://github.com/IcantFind-a-username/Attest/blob/main/docs/release-notes/v0.2.0.md) ·
 [Architecture](https://github.com/IcantFind-a-username/Attest/blob/main/docs/architecture/target-algorithm.md) ·
 [Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
 
