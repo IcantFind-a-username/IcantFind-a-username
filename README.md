@@ -119,7 +119,7 @@ Sovereign Founder OS is a **Developer Preview**. The primitives are real. The
 product path is not a production security boundary.
 
 <!-- sfos-status:start -->
-**Status** (auto-updated weekly): CI on `main`: passing · last commit: 2026-09-13 · 7 design RFCs · no tagged release · checked 2026-09-13
+**Status** (auto-updated weekly): CI on `main`: passing · last commit: 2026-09-14 · 7 design RFCs · no tagged release · checked 2026-09-14
 <!-- sfos-status:end -->
 
 - **No authenticated owner session on the product path.** The loopback server
