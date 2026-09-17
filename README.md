@@ -4,18 +4,17 @@
 
 > **I build AI-native systems where probabilistic models meet deterministic software boundaries.**
 
-MSc Blockchain Technology @ Nanyang Technological University, Singapore · graduating **Jan 2027**  
-BSc Business Information Technology @ University of Twente, Netherlands
+MSc Blockchain Technology @ Nanyang Technological University, Singapore · graduating **Jan 2027**
 
 `AI systems` · `agent infrastructure` · `Rust` · `Python` · `blockchain` · `applied cryptography` · `systems engineering`
 
 ## What I am working on now
 
-My main direction remains **AI systems / agent engineering**: building software around agents that has explicit execution boundaries, evidence, failure semantics, and deterministic checks where they matter.
+My main direction remains **AI systems / agent engineering**: building software around agents with explicit execution boundaries, evidence, failure semantics, and deterministic checks where they matter.
 
-I am also actively shipping consumer products. **Miao Care (喵护)**, a cat-care companion I developed, is now live on iOS. I am currently pushing **OneTapVocal** toward release — an intelligent singing-video tuning product designed to make vocal correction and enhancement accessible from a mobile workflow, with an iOS App Store launch planned next.
+I am also actively shipping consumer products. **Miao Care (喵护)**, a cat-care companion I developed, is now live on iOS. I am currently pushing **OneTapVocal** toward release — an intelligent singing-video vocal-tuning product designed to make vocal correction and enhancement accessible from a mobile workflow, with an iOS App Store launch planned next.
 
-At the same time, I am deepening the other half of my background — **hands-on blockchain engineering**. My current private engineering track is a DeFi liquidation/search system: historical on-chain replay, mainnet-fork simulation, liquidation economics, and eventually live shadow execution. The goal is not a career pivot away from AI; it is to add real EVM / DeFi / on-chain systems experience to a foundation that already includes L1/L2, scalability, privacy, and cryptography coursework.
+At the same time, I am deepening the other half of my background — **hands-on blockchain engineering**. My current private engineering track is a DeFi liquidation/search system: historical on-chain replay, mainnet-fork simulation, liquidation economics, and eventually live shadow execution. This is not a career pivot away from AI; it is a way to add real EVM / DeFi / on-chain systems experience to a foundation that already includes L1/L2, scalability, privacy, and cryptography coursework.
 
 I am deliberately keeping the current blockchain execution/search strategy private while it is being developed.
 
@@ -31,7 +30,7 @@ A cat-care companion focused on making day-to-day care easier to track and under
 
 ### OneTapVocal — building toward iOS release
 
-An intelligent singing-video vocal tuning product. The product is under active development, with the current focus on turning the audio-processing workflow into a simple mobile experience rather than exposing the complexity of the underlying pipeline.
+An intelligent singing-video vocal-tuning product. The current focus is turning a technically involved audio-processing workflow into a simple mobile experience instead of exposing the complexity of the underlying pipeline.
 
 **Status:** active development · iOS App Store release planned next.
 
@@ -41,43 +40,64 @@ These product projects are intentionally different from my research-heavy system
 
 ## Selected systems & research work
 
-### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS) — systems / Rust / agent execution
+### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS) — one-person company product prototype
 
 [![Rust](https://img.shields.io/badge/Rust-18_crates-000000?logo=rust&logoColor=white)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
 [![License: Apache-2.0](https://img.shields.io/badge/License-Apache--2.0-4C1)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/LICENSE)
-[![Status: Research Prototype](https://img.shields.io/badge/Status-Research_Prototype-orange)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
+[![Status: Developer Preview](https://img.shields.io/badge/Status-Developer_Preview-orange)](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
 
-A local-first founder workspace and systems experiment around **least privilege, explicit authority, controlled effects, provenance, and auditable execution**.
+**Sovereign Founder OS is my attempt at a local-first operating workspace for a one-person company.** The product prototype combines a simple founder-facing UI, structured company state, six bounded AI employees, and a Rust security-oriented execution layer underneath.
 
-The codebase grew into an 18-crate Rust workspace with 571 Rust tests and several security-oriented primitives: scoped capabilities, deterministic policy gates, execution journals, bounded Wasm execution, local structured company state, and a hash-chained audit trail.
+The product side is intentionally concrete: customers, projects, documents, invoices, receivables, team proposals, suggested next steps, and owner decisions are represented as structured state rather than disappearing into chat history.
 
-The current product path remains a **research/developer prototype**. Active feature development is paused while I focus my limited development time on other products and hands-on engineering work, but the codebase remains one of my main systems projects and a record of the design questions it exposed.
+The six AI employee roles cover different responsibilities:
+
+- **Requirements Analyst** — turns discovery material into structured problems, constraints, and open questions;
+- **Proposal Writer** — drafts offers and proposals from approved company context;
+- **Delivery Planner** — turns accepted work into delivery plans and tasks;
+- **Invoice Clerk** — prepares invoice-related drafts without issuing or collecting on the owner's behalf;
+- **Quality Checker** — reviews work products and reports findings without approving for the owner;
+- **Compliance Checker** — surfaces rule-backed issues and uncertainty without pretending to replace a licensed professional.
+
+The important design rule is that these AI employees **propose; they do not own authority**. High-impact effects are mediated by deterministic policy, explicit approval where required, scoped capabilities, bounded execution, and recorded outcomes.
+
+### Product UI
+
+| Today — company state, proposals, owner decisions | Privacy — preview exactly what AI work may expose |
+| --- | --- |
+| ![SFOS Today](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/today-zh.png) | ![SFOS Privacy](https://raw.githubusercontent.com/IcantFind-a-username/Sovereign-Founder-OS/main/docs/screenshots/privacy-en.png) |
+
+The **Today** view is the founder's control surface: outstanding decisions, leads, active work, receivables, AI-team proposals, suggested next steps, and kernel evidence are visible in one place.
+
+The **Privacy** view explores a different problem: before work is routed to a public model, the user can inspect what fields would leave the device, what is withheld or replaced, and the exact compiled text that would be sent. `Local Only` remains the strict path when nothing should leave the device. This is still a developer-preview boundary, not a claim of complete production confidentiality.
 
 ### Kernel path
 
 ```mermaid
 flowchart TD
-    U["Untrusted content / model output"] --> M["AI roles propose"]
-    M --> P{"Deterministic policy"}
+    U["Untrusted external content / model output"] --> M["6 AI employees\npropose plans and drafts"]
+    M --> P{"Deterministic policy\nscope · risk · data class"}
     P -->|deny| X["Stop / fail closed"]
     P -->|high-risk| H["Owner approval"]
-    P -->|allowed| C["Scoped capability"]
+    P -->|allowed| C["Scoped capability\nbound to the invocation"]
     H --> C
     C --> S["Bounded executor"]
-    S --> E["Controlled effect"]
-    E --> L["Audit / outcome record"]
+    S --> E["Controlled effect / local outbox"]
+    E --> L["Audit ledger / outcome record"]
     L -. "evidence + state" .-> M
 ```
 
-The intended separation is simple: model output may propose an action, but authority is introduced separately through deterministic policy and, where required, explicit approval. The capability constrains the authorized invocation; the executor constrains where the effect happens; the outcome is recorded rather than silently becoming part of chat history.
+I focused heavily on the security-oriented core: scoped capability proofs, deterministic policy gates, execution journals with explicit ambiguous states, bounded Wasm execution, structured audit evidence, and local-first state. The workspace grew to **18 Rust crates and 571 Rust tests**.
 
-The important result is not a claim that SFOS is a finished production security boundary. It is the engineering work and the limits it exposed.
+The project is a **Developer Preview / product prototype**, not a finished production security boundary. Active feature development is currently paused while I focus my limited development time on other products and on-chain engineering, but SFOS remains one of my main systems projects and the clearest expression of how I think about AI agents as software rather than chat interfaces.
 
 What I took from it:
 
 - intelligence and authority should not be treated as the same thing;
+- useful AI agents need product state, workflows, and explicit effects, not just prompts;
 - security claims need explicit threat models and honest limitations;
 - crash / ambiguous-effect states deserve first-class semantics rather than fake success;
+- privacy UX matters: users should be able to see what information a model would actually receive;
 - a smaller, understandable trusted boundary is usually more valuable than a feature-rich one.
 
 [Repository](https://github.com/IcantFind-a-username/Sovereign-Founder-OS) · [Architecture](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ARCHITECTURE.md) · [Threat model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md) · [RFCs](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/tree/main/rfcs)
@@ -93,15 +113,15 @@ What I took from it:
 
 **Evidence-first AI code review: the model investigates; a non-model certification kernel decides what is strong enough to publish.**
 
-Attest reached an experimental public milestone as a GitHub Action. Generated tests run against the PR head and merge base inside a secretless container; accepted defect claims are backed by reproducible receipts rather than model confidence alone.
+Attest shipped publicly as an experimental GitHub Action and reached **`v0.3.0`**. Generated tests run against the PR head and merge base inside a network-free / secretless container; accepted defect claims are backed by reproducible receipts rather than model confidence alone.
 
-On a manually adjudicated sample of 44 merged pull requests across 13 open-source Python libraries, Attest published 7 lines: **4 useful, 3 true but not actionable, 0 judged wrong**. Recall was intentionally low and measured separately rather than hidden behind an accuracy headline.
+The `v0.3.0` evaluation reports **68 merged pull requests across 19 open-source Python libraries**. Attest produced 14 review lines across 10 PRs; of the adjudicated lines, **4 were useful, 3 were true but not actionable, 0 were judged wrong**, with 7 lines still pending adjudication at release time. On the 40 injected forward-defect corpus, crash-class recall was **13/40 (32.5%)** under the release's default probe configuration. The project explicitly treats silence as abstention rather than a true negative.
 
-**Active development is currently paused.** The latest public release remains `v0.2.0`, but I am intentionally not treating that version as the end-state of the idea. I paused expansion because my individual development bandwidth is currently going into other engineering and product work, not because the project has been reclassified as finished or abandoned.
+**Active development is currently paused after `v0.3.0`.** This is a bandwidth decision: my individual development time is currently going into other products and engineering work, not a claim that Attest is finished or that the underlying idea has been abandoned.
 
-Attest remains a concrete experiment in **abstention, falsification, deterministic gates, evidence provenance, and the separation between model judgment and publishable claims**.
+Attest remains a concrete experiment in **abstention, falsification, deterministic gates, evidence provenance, differential reproduction, and the separation between model judgment and publishable claims**.
 
-[Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) · [Repository](https://github.com/IcantFind-a-username/Attest) · [Receipts](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md) · [Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
+[Latest release](https://github.com/IcantFind-a-username/Attest/releases/tag/v0.3.0) · [Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) · [Repository](https://github.com/IcantFind-a-username/Attest) · [Receipts](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md) · [Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
 
 ---
 
@@ -163,9 +183,9 @@ I use modern AI coding tools aggressively to increase implementation speed, whil
 
 ## Background
 
-At the **University of Twente**, I studied Business Information Technology after earlier Technical Computer Science coursework, combining software engineering with systems, data, and product-oriented project work.
+I am pursuing an **MSc in Blockchain Technology at Nanyang Technological University**. My coursework has covered blockchain privacy and scalability, L1/L2 mechanisms, cryptography, smart contracts, and related distributed-systems foundations.
 
-I am now pursuing an **MSc in Blockchain Technology at Nanyang Technological University**. My coursework has covered blockchain privacy and scalability, L1/L2 mechanisms, cryptography, smart contracts, and related distributed-systems foundations.
+Before NTU, I studied **Business Information Technology at the University of Twente**, where my work combined software engineering, data, systems, and product-oriented project development.
 
 Recent industry work includes designing and primarily implementing the upstream **Requirement Agent for ICBC's in-house QUEST platform**, together with work on multi-model evaluation and reliable AI-agent workflows.
 
