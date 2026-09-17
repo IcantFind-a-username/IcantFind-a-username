@@ -11,7 +11,9 @@ BSc Business Information Technology @ University of Twente, Netherlands
 
 ## What I am working on now
 
-My main direction is still **AI systems / agent engineering**: building software around agents that has explicit execution boundaries, evidence, failure semantics, and deterministic checks where they matter.
+My main direction remains **AI systems / agent engineering**: building software around agents that has explicit execution boundaries, evidence, failure semantics, and deterministic checks where they matter.
+
+I am also actively shipping consumer products. **Miao Care (喵护)**, a cat-care companion I developed, is now live on iOS. I am currently pushing **OneTapVocal** toward release — an intelligent singing-video tuning product designed to make vocal correction and enhancement accessible from a mobile workflow, with an iOS App Store launch planned next.
 
 At the same time, I am deepening the other half of my background — **hands-on blockchain engineering**. My current private engineering track is a DeFi liquidation/search system: historical on-chain replay, mainnet-fork simulation, liquidation economics, and eventually live shadow execution. The goal is not a career pivot away from AI; it is to add real EVM / DeFi / on-chain systems experience to a foundation that already includes L1/L2, scalability, privacy, and cryptography coursework.
 
@@ -19,7 +21,25 @@ I am deliberately keeping the current blockchain execution/search strategy priva
 
 ---
 
-## Selected work
+## Shipping & building
+
+### Miao Care (喵护) — shipped on iOS
+
+A cat-care companion focused on making day-to-day care easier to track and understand. I developed the product from concept through implementation and iOS release.
+
+**Status:** live on the iOS App Store.
+
+### OneTapVocal — building toward iOS release
+
+An intelligent singing-video vocal tuning product. The product is under active development, with the current focus on turning the audio-processing workflow into a simple mobile experience rather than exposing the complexity of the underlying pipeline.
+
+**Status:** active development · iOS App Store release planned next.
+
+These product projects are intentionally different from my research-heavy systems work: they keep me close to **shipping, product judgment, mobile UX, iteration speed, and real users**.
+
+---
+
+## Selected systems & research work
 
 ### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS) — systems / Rust / agent execution
 
@@ -31,17 +51,27 @@ A local-first founder workspace and systems experiment around **least privilege,
 
 The codebase grew into an 18-crate Rust workspace with 571 Rust tests and several security-oriented primitives: scoped capabilities, deterministic policy gates, execution journals, bounded Wasm execution, local structured company state, and a hash-chained audit trail.
 
-The important result is not a claim that the product is a finished security boundary. It is the engineering work and the limits it exposed. The current product path remains a **research/developer prototype**, and active feature development is paused while I reassess which parts deserve to become independent long-term work.
+The current product path remains a **research/developer prototype**. Active feature development is paused while I focus my limited development time on other products and hands-on engineering work, but the codebase remains one of my main systems projects and a record of the design questions it exposed.
+
+### Kernel path
 
 ```mermaid
-flowchart LR
-    A["AI / untrusted input"] --> B["proposal"]
-    B --> C{"deterministic policy"}
-    C -->|deny| D["stop"]
-    C -->|authorized| E["scoped capability"]
-    E --> F["bounded execution"]
-    F --> G["audit / outcome"]
+flowchart TD
+    U["Untrusted content / model output"] --> M["AI roles propose"]
+    M --> P{"Deterministic policy"}
+    P -->|deny| X["Stop / fail closed"]
+    P -->|high-risk| H["Owner approval"]
+    P -->|allowed| C["Scoped capability"]
+    H --> C
+    C --> S["Bounded executor"]
+    S --> E["Controlled effect"]
+    E --> L["Audit / outcome record"]
+    L -. "evidence + state" .-> M
 ```
+
+The intended separation is simple: model output may propose an action, but authority is introduced separately through deterministic policy and, where required, explicit approval. The capability constrains the authorized invocation; the executor constrains where the effect happens; the outcome is recorded rather than silently becoming part of chat history.
+
+The important result is not a claim that SFOS is a finished production security boundary. It is the engineering work and the limits it exposed.
 
 What I took from it:
 
@@ -59,14 +89,17 @@ What I took from it:
 [![Release](https://img.shields.io/github/v/release/IcantFind-a-username/Attest)](https://github.com/IcantFind-a-username/Attest/releases/latest)
 [![GitHub Marketplace](https://img.shields.io/badge/GitHub%20Marketplace-attest%20pull%20request%20review-2ea44f?logo=github)](https://github.com/marketplace/actions/attest-pull-request-review)
 [![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB?logo=python&logoColor=white)](https://github.com/IcantFind-a-username/Attest/blob/main/pyproject.toml)
+[![Status: Paused](https://img.shields.io/badge/Status-Paused-6B7280)](https://github.com/IcantFind-a-username/Attest)
 
 **Evidence-first AI code review: the model investigates; a non-model certification kernel decides what is strong enough to publish.**
 
-Attest shipped as an experimental GitHub Action (`v0.2.0`). Generated tests run against the PR head and merge base inside a secretless container; accepted defect claims are backed by reproducible receipts rather than model confidence alone.
+Attest reached an experimental public milestone as a GitHub Action. Generated tests run against the PR head and merge base inside a secretless container; accepted defect claims are backed by reproducible receipts rather than model confidence alone.
 
 On a manually adjudicated sample of 44 merged pull requests across 13 open-source Python libraries, Attest published 7 lines: **4 useful, 3 true but not actionable, 0 judged wrong**. Recall was intentionally low and measured separately rather than hidden behind an accuracy headline.
 
-Active expansion is currently paused after this evaluation milestone. The project remains a concrete experiment in **abstention, falsification, deterministic gates, and evidence provenance**.
+**Active development is currently paused.** The latest public release remains `v0.2.0`, but I am intentionally not treating that version as the end-state of the idea. I paused expansion because my individual development bandwidth is currently going into other engineering and product work, not because the project has been reclassified as finished or abandoned.
+
+Attest remains a concrete experiment in **abstention, falsification, deterministic gates, evidence provenance, and the separation between model judgment and publishable claims**.
 
 [Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) · [Repository](https://github.com/IcantFind-a-username/Attest) · [Receipts](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md) · [Design decisions](https://github.com/IcantFind-a-username/Attest/blob/main/DECISIONS.md)
 
@@ -112,18 +145,19 @@ My academic blockchain foundation includes **L1/L2 design, consensus/BFT, scalab
 
 ## The through-line
 
-These projects are different, but they share a systems question:
+These projects are different, but they share a systems mindset:
 
-> **How do we turn powerful probabilistic or decentralized components into software whose decisions, authority, evidence, and failure modes we can reason about?**
+> **Build quickly, but make authority, evidence, assumptions, and failure modes explicit enough to reason about.**
 
 | Area | What I have been exploring |
 | --- | --- |
 | **AI systems** | agents, execution boundaries, reliability, evaluation, human escalation |
 | **Systems engineering** | Rust, explicit state machines, least privilege, provenance, failure semantics |
 | **Blockchain** | L1/L2 foundations, cryptography, smart contracts, DeFi/on-chain execution |
+| **Product engineering** | shipping mobile products, UX, iteration, turning complex pipelines into usable software |
 | **Research engineering** | negative results, adversarial testing, reproducibility, calibrated claims |
 
-I am comfortable using modern AI coding tools aggressively to increase implementation speed, while treating architecture, assumptions, tests, and system understanding as the parts I still need to own.
+I use modern AI coding tools aggressively to increase implementation speed, while treating architecture, assumptions, tests, and system understanding as the parts I still need to own.
 
 ---
 
