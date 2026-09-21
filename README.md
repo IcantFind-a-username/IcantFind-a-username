@@ -2,21 +2,20 @@
 
 [![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
 
-> **I build AI-native systems where probabilistic models meet deterministic software boundaries.**
+> **Blockchain & on-chain systems engineer · AI agent infrastructure · deterministic checks where models and oracles are untrusted.**
 
-MSc Blockchain Technology @ Nanyang Technological University, Singapore · graduating **Jan 2027**
+MSc Blockchain Technology @ Nanyang Technological University, Singapore · graduating **Jan 2027** · open to **Singapore graduate** roles
 
-`AI systems` · `agent infrastructure` · `Rust` · `Python` · `blockchain` · `applied cryptography` · `systems engineering`
+`blockchain` · `on-chain / DeFi systems` · `Solidity` · `Foundry` · `Rust` · `AI agent infrastructure` · `applied cryptography` · `systems engineering`
 
 ## What I am working on now
 
-My main direction remains **AI systems / agent engineering**: building software around agents with explicit execution boundaries, evidence, failure semantics, and deterministic checks where they matter.
+Two active tracks right now:
 
-I am also actively shipping consumer products. **Miao Care (喵护)**, a cat-care companion I developed, is now live on iOS. I am currently pushing **OneTapVocal** toward release — an intelligent singing-video vocal-tuning product designed to make vocal correction and enhancement accessible from a mobile workflow, with an iOS App Store launch planned next.
+1. **On-chain / blockchain engineering (primary deepening track for graduate blockchain roles).** I am building a private DeFi liquidity-search and liquidation systems project to apply NTU MSc coursework in practice: historical on-chain replay, mainnet-fork reproduction with Foundry, adversarial fork tests, fail-closed safety controls, and only later shadow / live execution. Strategy and target-market details stay private while the system is early.
+2. **Shipping iOS products.** **Miao Care (喵护)** is live on the App Store. **OneTapVocal** is in active development toward release — a **one-click vocal correction (修音) product for videos**, not a singing-generator app.
 
-At the same time, I am deepening the other half of my background — **hands-on blockchain engineering**. My current private engineering track is a DeFi liquidation/search system: historical on-chain replay, mainnet-fork simulation, liquidation economics, and eventually live shadow execution. This is not a career pivot away from AI; it is a way to add real EVM / DeFi / on-chain systems experience to a foundation that already includes L1/L2, scalability, privacy, and cryptography coursework.
-
-I am deliberately keeping the current blockchain execution/search strategy private while it is being developed.
+**AI systems work is shipped evidence, not the only current build focus:** ICBC QUEST Requirement Agent (sole developer), plus open projects such as Attest v0.3.0 and Sovereign Founder OS. Feature work on Attest / SFOS is paused so bandwidth goes to iOS shipping and on-chain systems.
 
 ---
 
@@ -30,7 +29,7 @@ A cat-care companion focused on making day-to-day care easier to track and under
 
 ### OneTapVocal — building toward iOS release
 
-An intelligent singing-video vocal-tuning product. The current focus is turning a technically involved audio-processing workflow into a simple mobile experience instead of exposing the complexity of the underlying pipeline.
+A **one-click vocal correction (修音) product for videos**. The focus is turning a technically involved audio-processing pipeline into a simple mobile tap flow — fix vocals on video without exposing the underlying DSP complexity.
 
 **Status:** active development · iOS App Store release planned next.
 
@@ -139,7 +138,7 @@ That result pushed my later work toward harder separation between probabilistic 
 
 ## Current engineering track — on-chain systems
 
-I am currently using my blockchain background to build deeper **real-chain engineering experience**, not to replace my AI systems direction.
+This is my main skill-deepening track for **Singapore graduate blockchain / protocol / digital-asset infrastructure** roles: connect NTU theory (L1/L2, cryptography, smart contracts, DeFi) to a system that actually observes and interacts with live chain state.
 
 The current private project starts deliberately small:
 
@@ -171,9 +170,9 @@ These projects are different, but they share a systems mindset:
 
 | Area | What I have been exploring |
 | --- | --- |
-| **AI systems** | agents, execution boundaries, reliability, evaluation, human escalation |
+| **Blockchain** | L1/L2 foundations, cryptography, Solidity/Foundry, DeFi/on-chain execution, fail-closed controls |
 | **Systems engineering** | Rust, explicit state machines, least privilege, provenance, failure semantics |
-| **Blockchain** | L1/L2 foundations, cryptography, smart contracts, DeFi/on-chain execution |
+| **AI systems** | agents, execution boundaries, reliability, evaluation, human escalation |
 | **Product engineering** | shipping mobile products, UX, iteration, turning complex pipelines into usable software |
 | **Research engineering** | negative results, adversarial testing, reproducibility, calibrated claims |
 
@@ -193,19 +192,19 @@ Recent industry work includes designing and primarily implementing the upstream 
 
 ## Roles I am interested in
 
-For 2027 graduate / early-career roles, my primary interests remain:
+For **2027 Singapore graduate / early-career** roles, my primary targets are:
+
+- **Blockchain / Protocol / Smart Contract Engineer**
+- **Blockchain Security / on-chain systems**
+- **DeFi & Digital-Asset Infrastructure**
+
+Strong secondary interests (where agent / systems depth helps):
 
 - **AI Systems / Agent Engineer**
-- **Applied AI / AI Infrastructure Engineer**
-- **Systems / Reliability / Developer Infrastructure**
+- **Applied AI / AI Infrastructure**
+- **Systems / Reliability engineering**
 
-My blockchain background also gives me a second strong direction in:
-
-- **Blockchain / DeFi Engineering**
-- **Protocol / Digital-Asset Infrastructure**
-- **Blockchain Security / on-chain systems**
-
-I am most interested in roles where I can combine **AI-assisted engineering speed with systems-level reasoning**, rather than treating either AI or blockchain as a thin API layer.
+I want roles where **on-chain or security-critical systems work is real**, and where AI-assisted engineering speed does not replace deterministic checks, tests, and ownership of failure modes.
 
 ## Connect
 
