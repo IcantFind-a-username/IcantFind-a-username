@@ -74,16 +74,16 @@ The **Privacy** view explores a different problem: before work is routed to a pu
 
 ```mermaid
 flowchart TD
-    U["Untrusted external content / model output"] --> M["6 AI employees\npropose plans and drafts"]
-    M --> P{"Deterministic policy\nscope · risk · data class"}
+    U["Untrusted external content / model output"] --> M["6 AI employees propose plans and drafts"]
+    M --> P{"Deterministic policy: scope / risk / data class"}
     P -->|deny| X["Stop / fail closed"]
     P -->|high-risk| H["Owner approval"]
-    P -->|allowed| C["Scoped capability\nbound to the invocation"]
+    P -->|allowed| C["Scoped capability bound to the invocation"]
     H --> C
     C --> S["Bounded executor"]
     S --> E["Controlled effect / local outbox"]
     E --> L["Audit ledger / outcome record"]
-    L -. "evidence + state" .-> M
+    L -.->|evidence + state| M
 ```
 
 I focused heavily on the security-oriented core: scoped capability proofs, deterministic policy gates, execution journals with explicit ambiguous states, bounded Wasm execution, structured audit evidence, and local-first state. The workspace grew to **18 Rust crates and 571 Rust tests**.
