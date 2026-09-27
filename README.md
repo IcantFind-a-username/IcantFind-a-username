@@ -1,10 +1,10 @@
-# Franz Xu
+# IcantFind-a-username
 
 [![GitHub Commits Badge](https://ghcommits.com/api/badge/IcantFind-a-username.svg)](https://ghcommits.com/u/IcantFind-a-username)
 
 > **Blockchain & on-chain systems engineer · AI agent infrastructure · deterministic checks where models and oracles are untrusted.**
 
-MSc Blockchain Technology @ Nanyang Technological University, Singapore · graduating **Jan 2027** · open to **Singapore graduate** roles
+MSc in Blockchain Technology · graduating **Jan 2027** · open to **Singapore graduate** roles
 
 `blockchain` · `on-chain / DeFi systems` · `Solidity` · `Foundry` · `Rust` · `AI agent infrastructure` · `applied cryptography` · `systems engineering`
 
@@ -12,7 +12,7 @@ MSc Blockchain Technology @ Nanyang Technological University, Singapore · gradu
 
 Two active tracks right now:
 
-1. **On-chain / blockchain engineering (primary deepening track for graduate blockchain roles).** I am building a private DeFi liquidity-search and liquidation systems project to apply NTU MSc coursework in practice: historical on-chain replay, mainnet-fork reproduction with Foundry, adversarial fork tests, fail-closed safety controls, and only later shadow / live execution. Strategy and target-market details stay private while the system is early.
+1. **On-chain / blockchain engineering (primary deepening track for graduate blockchain roles).** I am building a private DeFi liquidity-search and liquidation systems project to apply MSc coursework in practice: historical on-chain replay, mainnet-fork reproduction with Foundry, adversarial fork tests, fail-closed safety controls, and only later shadow / live execution. Strategy and target-market details stay private while the system is early.
 2. **Shipping iOS products.** **Miao Care (喵护)** is live on the App Store. **OneTapVocal** is in active development toward release — a **one-click vocal correction (修音) product for videos**, not a singing-generator app.
 
 **AI systems work is shipped evidence, not the only current build focus:** ICBC QUEST Requirement Agent (sole developer), plus open projects such as Attest v0.3.0 and Sovereign Founder OS. Feature work on Attest / SFOS is paused so bandwidth goes to iOS shipping and on-chain systems.
@@ -138,7 +138,7 @@ That result pushed my later work toward harder separation between probabilistic 
 
 ## Current engineering track — on-chain systems
 
-This is my main skill-deepening track for **Singapore graduate blockchain / protocol / digital-asset infrastructure** roles: connect NTU theory (L1/L2, cryptography, smart contracts, DeFi) to a system that actually observes and interacts with live chain state.
+This is my main skill-deepening track for **Singapore graduate blockchain / protocol / digital-asset infrastructure** roles: connect MSc theory (L1/L2, cryptography, smart contracts, DeFi) to a system that actually observes and interacts with live chain state.
 
 The current private project starts deliberately small:
 
@@ -182,9 +182,9 @@ I use modern AI coding tools aggressively to increase implementation speed, whil
 
 ## Background
 
-I am pursuing an **MSc in Blockchain Technology at Nanyang Technological University**. My coursework has covered blockchain privacy and scalability, L1/L2 mechanisms, cryptography, smart contracts, and related distributed-systems foundations.
+I am pursuing an **MSc in Blockchain Technology**. My coursework has covered blockchain privacy and scalability, L1/L2 mechanisms, cryptography, smart contracts, and related distributed-systems foundations.
 
-Before NTU, I studied **Business Information Technology at the University of Twente**, where my work combined software engineering, data, systems, and product-oriented project development.
+Before that, I studied **Business Information Technology**, where my work combined software engineering, data, systems, and product-oriented project development.
 
 Recent industry work includes designing and primarily implementing the upstream **Requirement Agent for ICBC's in-house QUEST platform**, together with work on multi-model evaluation and reliable AI-agent workflows.
 
@@ -205,7 +205,3 @@ Strong secondary interests (where agent / systems depth helps):
 - **Systems / Reliability engineering**
 
 I want roles where **on-chain or security-critical systems work is real**, and where AI-assisted engineering speed does not replace deterministic checks, tests, and ownership of failure modes.
-
-## Connect
-
-[LinkedIn](https://www.linkedin.com/in/yiqun-xu-8627a8264) · [Email](mailto:franzxu28@gmail.com)
