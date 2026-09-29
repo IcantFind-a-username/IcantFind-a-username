@@ -8,6 +8,10 @@ MSc in Blockchain Technology · graduating **Jan 2027** · open to **Singapore g
 
 `blockchain` · `on-chain / DeFi systems` · `Solidity` · `Foundry` · `Rust` · `AI agent infrastructure` · `applied cryptography` · `systems engineering`
 
+## Open-source contributions
+
+- **pandas** — diagnosed and fixed a regression in `Series.str.zfill` on pyarrow-backed strings (negative widths raised `ArrowInvalid` instead of returning the string unchanged); reviewed and merged by a core developer for pandas 3.1 ([pandas-dev/pandas#69668](https://github.com/pandas-dev/pandas/pull/69668)). Includes a regression test.
+
 ## What I am working on now
 
 Two active tracks right now:
