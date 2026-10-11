@@ -1,83 +1,87 @@
-# Hi, I'm Franz Xu
+<div align="center">
 
-**AI systems · Agent infrastructure · Software engineering**
+# Franz Xu
 
-I build AI-enabled software with explicit execution boundaries, reproducible evidence, and understandable failure modes. My work spans enterprise agents, Rust systems, automated code review, on-chain engineering, and shipped iOS products.
+### Build with curiosity. Verify with evidence.
 
-I'm pursuing an **MSc in Blockchain Technology at Nanyang Technological University**, graduating **January 2027**, following a bachelor's in **Business Information Technology at the University of Twente**.
+Independent developer exploring **AI agents, local-first systems, and on-chain software**.  
+Sometimes that means a Rust execution kernel. Sometimes it means an app for taking care of cats.
 
-**Open to graduate / early-career engineering roles** in AI systems, agent platforms, software infrastructure, and applied AI. I'm also interested in blockchain and security-oriented systems engineering.
+[Projects](#things-ive-built) · [Open-source contributions](#small-fixes-real-impact) · [Engineering notes](#ideas-i-keep-coming-back-to)
+
+</div>
 
 ---
 
-## Industry engineering
+## The questions behind the code
 
-**ICBC — QUEST Requirement Agent**
+Most of my projects start with a question I can't leave alone.
 
-Designed and primarily implemented the upstream Requirement Agent for ICBC's in-house QUEST platform. The work connects requirements analysis with structured outputs, evidence-backed conclusions, validation gates, and reliable agent workflows.
+**What should an AI agent actually be allowed to do?**  
+**What makes a generated claim worth trusting?**  
+**What happens when a system fails halfway through an action?**
 
-**Sqills · Siemens Mobility — Software Engineering Internship**
+I explore those questions by building things: execution boundaries, differential tests, local-first workspaces, and small products people can use. I'm interested in the parts where a convincing demo has to become understandable software.
 
-Built **Sqills Mixer**, a Slack bot for recurring colleague matching. Worked with Java, Spring Boot, MyBatis Plus, Redis/Redisson, and Docker in a GitLab/Jira development workflow.
-
-## Open-source contributions
-
-**[pandas — merged regression fix](https://github.com/pandas-dev/pandas/pull/69668)**  
-Diagnosed and fixed a regression in `Series.str.zfill` on PyArrow-backed strings: negative widths raised `ArrowInvalid` instead of returning the original string. Contributed the fix and a regression test; reviewed and merged by a core maintainer.
-
-## Selected projects
+## Things I've built
 
 ### [Sovereign Founder OS](https://github.com/IcantFind-a-username/Sovereign-Founder-OS)
-**Rust · Local-first software · Agent execution boundaries**
+*A workspace for a one-person company, with AI employees that have boundaries.*
 
-A local-first workspace prototype combining structured business state, six bounded AI employee roles, and a security-oriented Rust execution layer.
+Structured company state, six bounded AI roles, and a Rust execution layer. Agents propose work; scoped capabilities and deterministic policies govern effects. Privacy controls make the outgoing model context inspectable.
 
-- Scoped capabilities and deterministic policy gates separate model proposals from execution authority.
-- Bounded Wasm execution, audit records, and explicit ambiguous-effect states make failures inspectable.
-- Privacy controls let users inspect what information would be sent to a model.
+This is where I explore authority, local ownership, and what an agent should do when an action's outcome is uncertain.
 
-**Status:** developer preview; feature development paused. It is a product prototype, not a production security guarantee.
+**Rust · Local-first · Wasm · Capability-based execution**  
+Developer preview / prototype · feature development paused
 
 [Architecture](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/ARCHITECTURE.md) · [Threat model](https://github.com/IcantFind-a-username/Sovereign-Founder-OS/blob/main/THREAT_MODEL.md)
 
 ### [Attest](https://github.com/IcantFind-a-username/Attest)
-**Python · Differential testing · Evidence-backed AI code review**
+*An AI code reviewer that has to bring receipts.*
 
-An experimental GitHub Action where a model investigates potential defects and a deterministic certification kernel decides which claims have enough evidence to publish.
+The model investigates a possible defect. Generated tests run against the PR head and merge base in network-free, secretless containers. A deterministic certification kernel decides whether the evidence supports publishing a claim.
 
-Generated tests run against the PR head and merge base in network-free, secretless containers. Reports are backed by reproducible receipts; silence is treated as abstention.
+The interesting part is knowing when there is enough evidence to say something—and when to abstain.
 
-**Status:** public release **v0.3.0**; active development paused.
+**Python · Differential testing · Reproducible evidence**  
+Released as an experimental GitHub Action · **v0.3.0** · development paused
 
-[Release](https://github.com/IcantFind-a-username/Attest/releases/tag/v0.3.0) · [GitHub Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) · [Evidence receipts](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md)
-
-### On-chain systems research
-**DeFi · Historical replay · Transaction simulation**
-
-A private engineering project exploring liquidation mechanics, historical chain-state reconstruction, oracle behavior, simulation, and execution economics. The work emphasizes reproducibility, fail-closed controls, and validating assumptions before real execution.
-
-### Miao Care (喵护)
-**iOS · Product engineering · Shipped**
-
-A cat-care companion that I developed from concept through implementation and App Store release. It complements my systems work with hands-on experience in mobile UX and end-to-end product delivery.
+[Release](https://github.com/IcantFind-a-username/Attest/releases/tag/v0.3.0) · [Marketplace](https://github.com/marketplace/actions/attest-pull-request-review) · [Receipts](https://github.com/IcantFind-a-username/Attest/blob/main/docs/receipts.md)
 
 ### [Corum](https://github.com/IcantFind-a-username/Corum)
-**Research · Multi-model evaluation**
+*What does agreement between AI reviewers actually tell us?*
 
-A concluded study of dependence-aware consensus among AI reviewers. A central lesson: model agreement is not automatically independent evidence. This informed my later work on separating probabilistic judgment from publication and execution rules.
+A concluded study of dependence-aware multi-model consensus. Its most useful lesson shaped the projects above: reviewers can agree for the same wrong reason. Aggregation alone cannot supply the evidence a system is missing.
+
+**Multi-model evaluation · Dependence · Negative results**
+
+## Beyond the public repos
+
+**On-chain systems.** A private project exploring liquidation mechanics, historical state reconstruction, oracle behavior, and execution economics. A place to test protocol assumptions against chain data and simulation.
+
+**Miao Care (喵护).** A cat-care companion I took from concept to iOS App Store release. A smaller, everyday problem—and a chance to make something useful outside the terminal.
+
+**Agents at work.** I designed and primarily implemented the Requirement Agent for ICBC's QUEST platform. At Sqills, I built a Slack bot for recurring colleague matching. Both gave me practical problems to think through beyond my own projects.
+
+## Small fixes, real impact
+
+**[pandas #69668 — merged](https://github.com/pandas-dev/pandas/pull/69668)**
+
+Fixed a regression in `Series.str.zfill` on PyArrow-backed strings: negative widths raised `ArrowInvalid` instead of returning the original string. The contribution includes a regression test.
+
+I like this scale of contribution too: find a concrete failure, understand it, and leave behind a test.
+
+## Ideas I keep coming back to
+
+- **Intelligence and authority are separate design problems.** A good proposal still needs an execution boundary.
+- **Claims should come with evidence.** Reproductions, tests, and explicit assumptions make a result easier to inspect.
+- **“I don't know” belongs in the state machine.** Abstention and ambiguous outcomes deserve honest representation.
+- **Local-first should be visible to the user.** People should be able to see what stays on their device and what leaves it.
+- **A negative result can change the next design.** I keep the limitations alongside the things that worked.
+
+I use AI coding tools extensively. I own the architecture, the validation, and the work of understanding what ships.
 
 ---
 
-## Engineering interests
-
-| Area | Focus |
-| --- | --- |
-| **AI systems** | Agent orchestration, structured workflows, evaluation, evidence provenance |
-| **Software infrastructure** | Rust, execution boundaries, state machines, auditability, failure recovery |
-| **Backend engineering** | Python, Java / Spring Boot, Redis, Docker |
-| **Blockchain** | Solidity / Foundry, DeFi mechanics, simulation, applied cryptography |
-| **Product delivery** | Turning complex systems into usable software and shipping to users |
-
-I use AI coding tools extensively. Architecture, validation, technical understanding, and responsibility for the result remain mine.
-
-> Build useful systems. Make their assumptions, authority, and failure modes explicit.
+<sub>University of Twente · Business Information Technology → Nanyang Technological University · MSc in Blockchain Technology</sub>
