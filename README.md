@@ -1,6 +1,6 @@
 <div align="center">
 
-# Franz Xu
+# Franz
 
 ### Build with curiosity. Verify with evidence.
 
