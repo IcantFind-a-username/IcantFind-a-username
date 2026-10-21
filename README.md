@@ -67,7 +67,7 @@ A native iPhone app plus a mobile web UI (PWA) for [DeepSeek Harness](https://gi
 
 ## Beyond the public repos
 
-**On-chain systems.** A private project exploring liquidation mechanics, historical state reconstruction, oracle behavior, and execution economics. It tests protocol assumptions against chain data and simulation.
+**On-chain systems.** A private, end-to-end on-chain strategy system with a complete production architecture, now running live with real capital. Details are kept private.
 
 **Agents at work.** I designed and did most of the implementation of the Requirement Agent for ICBC's QUEST platform. At Sqills, I built a Slack bot for recurring colleague matching.
 
